@@ -1,0 +1,19 @@
+﻿  Source.cpp
+D:\Users\dom2\source\repos\infa1lab\infa1lab\Source.cpp(34,46): warning C4244:  аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Users\dom2\source\repos\infa1lab\infa1lab\Source.cpp(34,43): warning C4244:  аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Users\dom2\source\repos\infa1lab\infa1lab\Source.cpp(37,42): warning C4244:  аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Users\dom2\source\repos\infa1lab\infa1lab\Source.cpp(37,39): warning C4244:  аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Users\dom2\source\repos\infa1lab\infa1lab\Source.cpp(45,14): warning C4244:  инициализация: преобразование "float" в "int", возможна потеря данных
+D:\Users\dom2\source\repos\infa1lab\infa1lab\Source.cpp(52,27): warning C4244:  аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Users\dom2\source\repos\infa1lab\infa1lab\Source.cpp(52,24): warning C4244:  аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Users\dom2\source\repos\infa1lab\infa1lab\Source.cpp(58,42): warning C4244:  аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Users\dom2\source\repos\infa1lab\infa1lab\Source.cpp(58,39): warning C4244:  аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Users\dom2\source\repos\infa1lab\infa1lab\Source.cpp(61,26): warning C4244:  аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Users\dom2\source\repos\infa1lab\infa1lab\Source.cpp(61,23): warning C4244:  аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Users\dom2\source\repos\infa1lab\infa1lab\Source.cpp(61,28): warning C4244:  -=: преобразование "float" в "int", возможна потеря данных
+D:\Users\dom2\source\repos\infa1lab\infa1lab\Source.cpp(82,43): warning C4244:  аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Users\dom2\source\repos\infa1lab\infa1lab\Source.cpp(82,40): warning C4244:  аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Users\dom2\source\repos\infa1lab\infa1lab\Source.cpp(85,27): warning C4244:  аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Users\dom2\source\repos\infa1lab\infa1lab\Source.cpp(85,24): warning C4244:  аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Users\dom2\source\repos\infa1lab\infa1lab\Source.cpp(158,13): warning C4326:  возвращаемый тип "main" должен быть "int", а не "void"
+  infa1lab.vcxproj -> D:\Users\dom2\source\repos\infa1lab\Debug\infa1lab.exe
