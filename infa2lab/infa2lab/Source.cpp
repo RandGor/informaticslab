@@ -19,8 +19,8 @@ int chartoint(char a) {
 	return i;
 }
 
-float fromRto10(string num, int r) {
-	float ans = 0;
+double fromRto10(string num, int r) {
+	double ans = 0;
 	int c = 0;
 	int end = 0;
 	while (num[c] != '\0' && num[c] != '.')
@@ -38,13 +38,13 @@ float fromRto10(string num, int r) {
 	return ans;
 }
 
-string from10toR(float num, int r) {
+string from10toR(double num, int r) {
 	if (num == 0)
 		return "0";
-	char ans[100];
+	char ans[220];
 	int int_num = num;
-	float frac_num = num - floor(num);
-	int shift = 16;
+	double frac_num = num - floor(num);
+	int shift = 108;
 	int i = shift;
 	int j;
 	int iterator = 0;
@@ -115,7 +115,7 @@ string hextobin(string hex) {
 	return bin;
 }
 
-string getbinorder(float num, int bites) {
+string getbinorder(double num, int bites) {
 	int power = 0;
 	int i = 0;
 
@@ -138,7 +138,7 @@ string getbinorder(float num, int bites) {
 	return binorder;
 }
 
-string getbinmantis(float num, int bites) {
+string getbinmantis(double num, int bites) {
 	string m = from10toR(abs(num), 2);
 
 	char s[100];
@@ -160,7 +160,7 @@ string getbinmantis(float num, int bites) {
 	return s;
 }
 
-string getbinfloat(float num) {
+string getbinfloat(double num) {
 	int powerbites = 8;
 	int mantissabites = 23;
 
@@ -177,7 +177,7 @@ string getbinfloat(float num) {
 	return binfloat;
 }
 
-string getbindouble(float num) {
+string getbindouble(double num) {
 	int powerbites = 11;
 	int mantissabites = 52;
 
@@ -194,7 +194,7 @@ string getbindouble(float num) {
 	return bindouble;
 }
 
-string gethexfloat(float num) {
+string gethexfloat(double num) {
 	string hexfloat;
 	string binfloat = getbinfloat(num);
 	for (int i = 0; i < 32; i = i+4)
@@ -206,7 +206,7 @@ string gethexfloat(float num) {
 	return hexfloat;
 }
 
-string gethexdouble(float num) {
+string gethexdouble(double num) {
 	string hexdouble;
 	string bindouble = getbindouble(num);
 	for (int i = 0; i < 64; i = i + 4)
@@ -248,7 +248,7 @@ float getfloatbin(string bins) {
 	return ans;
 }
 
-float getdoublebin(string bins) {
+double getdoublebin(string bins) {
 	int powerbites = 11;
 	int mantissabites = 52;
 
@@ -257,7 +257,7 @@ float getdoublebin(string bins) {
 	string mantis = "1.";
 
 	int power;
-	float ans = 0;
+	double ans = 0;
 	sign = bins[0] == '1';
 	order = bins.substr(1, powerbites);
 	mantis.append(bins.substr(powerbites + 1, mantissabites));
@@ -270,10 +270,10 @@ float getdoublebin(string bins) {
 }
 
 
-float getallhex(string hex) {
+double getallhex(string hex) {
 	string bins = getbinhex(hex);
 
-	float num = 0;
+	double num = 0;
 	if (bins.size() == 32)
 		num = getfloatbin(bins);
 	else if (bins.size() == 64)
@@ -285,7 +285,7 @@ void v1() {
 	ifstream f;
 	f.open("input1.txt");
 	if ((!f.is_open()) || (f.peek() == EOF)) return;
-	float num;
+	double num;
 
 	while (!f.eof())
 	{
@@ -303,7 +303,7 @@ void v2() {
 	f.open("input2.txt");
 	if ((!f.is_open()) || (f.peek() == EOF)) return;
 	string hex;
-	float num;
+	double num;
 
 	while (!f.eof())
 	{
