@@ -19,8 +19,8 @@ int chartoint(char a) {
 	return i;
 }
 
-float fromRto10(string num, int r) {
-	float ans = 0;
+double fromRto10(string num, int r) {
+	double ans = 0;
 	int c = 0;
 	int end = 0;
 	while (num[c] != '\0' && num[c] != '.')
@@ -38,13 +38,13 @@ float fromRto10(string num, int r) {
 	return ans;
 }
 
-string from10toR(float num, int r) {
+string from10toR(double num, int r) {
 	if (num == 0)
 		return "0";
-	char ans[100];
+	char ans[220];
 	int int_num = num;
-	float frac_num = num - floor(num);
-	int shift = 16;
+	double frac_num = num - floor(num);
+	int shift = 108;
 	int i = shift;
 	int j;
 	int iterator = 0;
@@ -87,7 +87,7 @@ string from10toR(float num, int r) {
 		i--;
 	}
 
-	while (ans[iterator - 1] == '0')
+	while (ans[iterator-1] == '0')
 		iterator--;
 
 	ans[iterator] = '\0';
@@ -100,7 +100,7 @@ void f1() {
 	if ((!f.is_open()) || (f.peek() == EOF)) return;
 
 	string nums;
-	float num;
+	double num;
 	int r1, r2;
 	while (!f.eof())
 	{
@@ -120,7 +120,7 @@ void f2() {
 	f.open("input2.txt");
 	if ((!f.is_open()) || (f.peek() == EOF)) return;
 	string num1, num2;
-	float n1, n2, res;
+	double n1, n2, res;
 	string Res;
 	int r;
 	char symb;
