@@ -87,7 +87,7 @@ string from10toR(double num, int r) {
 		i--;
 	}
 
-	while (ans[iterator-1] == '0')
+	while (ans[iterator - 1] == '0')
 		iterator--;
 
 	ans[iterator] = '\0';
@@ -130,11 +130,22 @@ string getbinorder(double num, int bites) {
 		i++;
 	end = i;
 
-	power = dota - 1;
+	i = 2;
+	if (m[0] == '0')
+	{
+		while (m[i] != '\0' && m[i] == '0') {
+			i++;
+		}
+		power = 1 - i;
+	}
+	else
+	{
+		power = dota - 1;
+	}
 	float order = power + (pow(2, bites - 1) - 1);
 
 	string binorder = from10toR(order, 2);
-
+	binorder.insert(0, bites - binorder.size(), '0');
 	return binorder;
 }
 
@@ -142,21 +153,26 @@ string getbinmantis(double num, int bites) {
 	string m = from10toR(abs(num), 2);
 
 	char s[100];
-	int i = 1;
+	int i = 0;
 	int iterator = 0;
 
 	for (int j = 0; j < bites; j++)
 	{
 		s[j] = '0';
 	}
-	s[bites] = '\0';
+	
+
+	bool was = false;
 
 	while (m[i] != '\0')
 	{
-		if (m[i] != '.')
+		if (m[i] != '.' && was)
 			s[iterator++] = m[i];
+		if (m[i] == '1')
+			was = true;
 		i++;
 	}
+	s[bites] = '\0';
 	return s;
 }
 
@@ -165,7 +181,7 @@ string getbinfloat(double num) {
 	int mantissabites = 23;
 
 	string binfloat;
-	
+
 	bool signb = num < 0;
 	string sign = signb ? "1" : "0";
 	string binorder = getbinorder(num, powerbites);
@@ -197,9 +213,9 @@ string getbindouble(double num) {
 string gethexfloat(double num) {
 	string hexfloat;
 	string binfloat = getbinfloat(num);
-	for (int i = 0; i < 32; i = i+4)
+	for (int i = 0; i < 32; i = i + 4)
 	{
-		float p1 = fromRto10(binfloat.substr(i, 4),2);
+		float p1 = fromRto10(binfloat.substr(i, 4), 2);
 		string p2 = from10toR(p1, 16);
 		hexfloat.append(p2);
 	}
@@ -221,7 +237,7 @@ string getbinhex(string hex) {
 	int i = 0;
 	while (hex[i] != '\0')
 	{
-		bin.append(hextobin(hex.substr(i,1)));
+		bin.append(hextobin(hex.substr(i, 1)));
 		i++;
 	}
 	return bin;
@@ -243,8 +259,8 @@ float getfloatbin(string bins) {
 
 	power = fromRto10(order, 2) - pow(2, powerbites - 1) + 1;
 
-	ans = fromRto10(mantis, 2) * pow(2, power) * (sign == 1?-1:1);
-	
+	ans = fromRto10(mantis, 2) * pow(2, power) * (sign == 1 ? -1 : 1);
+
 	return ans;
 }
 
@@ -318,4 +334,5 @@ int main() {
 	v1();
 	printf_s("=====================================\n\n");
 	v2();
+	_getch();
 }
