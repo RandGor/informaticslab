@@ -1,0 +1,3 @@
+Function FUNC(x, y)
+	FUNC = SIN(x+y)
+End Function

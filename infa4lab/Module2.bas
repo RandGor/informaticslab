@@ -1,0 +1,65 @@
+Attribute VB_Name = "Module2"
+Sub Table()
+    Dim x1 As Double, x2 As Double, ix As Double, iy As Double, y1 As Double, y2 As Double, shagx As Double, shagy As Double, Temp As String
+    x1 = InputBox("Set first x")
+    x2 = InputBox("Set second x")
+    y1 = InputBox("Set first y")
+    y2 = InputBox("Set second y")
+    shagx = InputBox("Set x step")
+    shagy = InputBox("Set y step")
+    Temp = InputBox("Set table name")
+    Range("B2").Select
+    ActiveCell.FormulaR1C1 = x1
+    Range("B2").Select
+    Selection.DataSeries Rowcol:=xlRows, Type:=xlLinear, Date:=xlDay, Step _
+        :=shagx, Stop:=x2, Trend:=False
+    Range("A3").Select
+    ActiveCell.FormulaR1C1 = y1
+    Range("A3").Select
+    Selection.DataSeries Rowcol:=xlColumns, Type:=xlLinear, Date:=xlDay, _
+        Step:=shagy, Stop:=y2, Trend:=False
+    Range("B3").Select
+    ActiveCell.FormulaR1C1 = "=FUNC(R2C,RC1)"
+    Range("B3").Select
+    ix = 0
+    iy = 0
+    For i = x1 To x2 Step shagx
+       ix = ix + 1
+    Next i
+    For i = y1 To y2 Step shagy
+       iy = iy + 1
+    Next i
+    x2 = ix + 1
+    y2 = iy + 2
+    Selection.AutoFill Destination:=Range(Cells(3, 2), Cells(3, x2)), Type:=xlFillDefault
+    Range(Cells(3, 2), Cells(3, x2)).Select
+    Selection.AutoFill Destination:=Range(Cells(3, 2), Cells(y2, x2)), Type:=xlFillDefault
+    Range(Cells(3, 2), Cells(y2, x2)).Select
+    Range(Cells(2, 1), Cells(y2, x2)).Select
+    ActiveSheet.Shapes.AddChart2(307, xlSurface).Select
+    ActiveChart.SetSourceData Source:=Range(Cells(2, 1), Cells(y2, x2))
+    ActiveChart.ChartTitle.Select
+    ActiveChart.ChartTitle.Text = Temp
+    Selection.Format.TextFrame2.TextRange.Characters.Text = Temp
+    With Selection.Format.TextFrame2.TextRange.Characters(1, 4).ParagraphFormat
+        .TextDirection = msoTextDirectionLeftToRight
+        .Alignment = msoAlignCenter
+    End With
+    With Selection.Format.TextFrame2.TextRange.Characters(1, 4).Font
+        .BaselineOffset = 0
+        .Bold = msoFalse
+        .NameComplexScript = "+mn-cs"
+        .NameFarEast = "+mn-ea"
+        .Fill.Visible = msoTrue
+        .Fill.ForeColor.RGB = RGB(89, 89, 89)
+        .Fill.Transparency = 0
+        .Fill.Solid
+        .Size = 14
+        .Italic = msoFalse
+        .Kerning = 12
+        .Name = "+mn-lt"
+        .UnderlineStyle = msoNoUnderline
+        .Spacing = 0
+        .Strike = msoNoStrike
+    End With
+End Sub
