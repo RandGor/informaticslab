@@ -35,21 +35,24 @@ Sub Table()
     Selection.AutoFill Destination:=Range(Cells(3, 2), Cells(y2, x2)), Type:=xlFillDefault
     Range(Cells(3, 2), Cells(y2, x2)).Select
     Range(Cells(2, 1), Cells(y2, x2)).Select
-    ActiveSheet.Shapes.AddChart2(307, xlSurface).Select
+    ActiveSheet.Shapes.AddChart.Select
     ActiveChart.SetSourceData Source:=Range(Cells(2, 1), Cells(y2, x2))
+    ActiveChart.ChartType = xlSurface
+    ActiveChart.ChartStyle = 2
+    ActiveChart.HasTitle = True
     ActiveChart.ChartTitle.Select
     ActiveChart.ChartTitle.Text = Temp
     Selection.Format.TextFrame2.TextRange.Characters.Text = Temp
-    With Selection.Format.TextFrame2.TextRange.Characters(1, 4).ParagraphFormat
+    With Selection.Format.TextFrame2.TextRange.Characters.ParagraphFormat
         .TextDirection = msoTextDirectionLeftToRight
         .Alignment = msoAlignCenter
     End With
-    With Selection.Format.TextFrame2.TextRange.Characters(1, 4).Font
+    With Selection.Format.TextFrame2.TextRange.Characters.Font
         .BaselineOffset = 0
         .Bold = msoFalse
         .NameComplexScript = "+mn-cs"
         .NameFarEast = "+mn-ea"
-        .Fill.Visible = msoTrue
+        .Fill.Visible = msoTrues
         .Fill.ForeColor.RGB = RGB(89, 89, 89)
         .Fill.Transparency = 0
         .Fill.Solid
@@ -61,4 +64,8 @@ Sub Table()
         .Spacing = 0
         .Strike = msoNoStrike
     End With
+    ActiveChart.Legend.Select
+    Selection.Delete
 End Sub
+
+
